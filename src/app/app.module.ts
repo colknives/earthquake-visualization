@@ -37,7 +37,8 @@ import { MapService } from './modules/map/map.service';
         backdropBorderRadius: '4px',
         primaryColour: '#ffffff', 
         secondaryColour: '#ffffff', 
-        tertiaryColour: '#ffffff'
+        tertiaryColour: '#ffffff',
+        fullScreenBackdrop: true
     }),
     ValidationFieldModule,
     MapModule
