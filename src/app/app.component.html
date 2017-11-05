@@ -1,20 +1,85 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.com/">Angular blog</a></h2>
-  </li>
-</ul>
+<ngx-loading [show]="processing"></ngx-loading>
+<div class="row map-wrapper">
+	<div class="col-sm-12 col-md-3 search-container">
+		
+		<div class="row">
+			<div class="col-md-12">
+				<h4>Earthquake Visualization</h4>
+				<p>This webpage visualizes earthquake events within the Philippines.</p>
+				<p>Enter the dates below to know the events from the chosen timeline.</p>
+			</div>
+		</div>
 
+		<div class="row" *ngIf="connectError">
+			<div class="col-md-12 alert alert-danger" role="alert">
+			  Can't connect to server. Please try again later.
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<form method="POST" [formGroup]="searchForm">
+					<div class="form-group row">
+						<div class="col-md-12" >
+				            <label class="" for="from">From</label>
+				            <owl-date-time
+				               formControlName="from"
+                               [dateFormat]="'YYYY-MM-DD'"
+                               [type]="'calendar'" 
+                               [placeHolder]="'yyyy-mm-dd'"
+                               [dataType]="'string'"></owl-date-time>
+				        </div>
+				        <div class="col-md-12">
+                            <validation-field 
+                                [displayError]="this.validationFieldService.isFieldValid('from')" 
+                                field="from" 
+                                [errorMsg]="this.validationFieldService.getError('from','From')">
+                            </validation-field>
+                        </div>
+				    </div>
+				    <div class="form-group row">
+						<div class="col-md-12">
+				            <label class="" for="to">To</label>
+				            <owl-date-time
+				               formControlName="to"
+                               [dateFormat]="'YYYY-MM-DD'"
+                               [type]="'calendar'" 
+                               [placeHolder]="'yyyy-mm-dd'"
+                               [dataType]="'string'"></owl-date-time>
+				        </div>
+				        <div class="col-md-12">
+                            <validation-field 
+                                [displayError]="this.validationFieldService.isFieldValid('to')" 
+                                field="to" 
+                                [errorMsg]="this.validationFieldService.getError('to','To')">
+                            </validation-field>
+                        </div>
+				    </div>
+
+
+				    <div class="form-actions">
+				        <div class="form-group row">
+				            <div class="col-md-6 text-center">
+				                <button type="button"  (click)="save(searchForm.value)" [disabled]="processing" class="btn btn-primary btn-block" type="button">Search</button>
+				            </div>
+				            <div class="col-md-6 text-center">
+				                <button type="button"  (click)="clear()" [disabled]="processing" class="btn btn-primary btn-block" type="button">Clear</button>
+				            </div>
+				        </div>
+				    </div>
+				</form>
+			</div>
+		</div>
+
+		<div class="row footer">
+			<div class="col-md-12 text-right">
+				<p>Created with <i class="fa fa-heart"></i> by Coleen Kier Ambrosio</p>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-sm-12 col-md-9 map-container">
+		<map></map>
+		<!-- <div id="googleMap"></div> -->
+	</div>
+</div>

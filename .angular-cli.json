@@ -19,6 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "assets/bootstrap/css/bootstrap.min.css",
+        "assets/font-awesome-4.7.0/css/font-awesome.min.css",
+        "assets/ng-pick-datetime/assets/style/picker.min.css",
         "styles.css"
       ],
       "scripts": [],

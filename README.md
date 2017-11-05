@@ -1,28 +1,33 @@
-# GeoJsonVisual
+# GeoJSON​ ​Visualization​ ​Webpage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+## Introduction
 
-## Development server
+This project is a simple SPA ( Single Page Application ) which visualizes earthquake events within the Philippines.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Prerequisite
 
-## Code scaffolding
+The following are needed to install:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+1. [Node Js](https://nodejs.org/en/)
+2. [Angular CLI](https://cli.angular.io/)
+3. [Git Bash](https://git-for-windows.github.io/)
 
-## Build
+## Install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+To install, clone the repository by running the following command:
 
-## Running unit tests
+	git clone https://github.com/colknives/earthquake-visualization.git
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Next, run the following command in git bash to install all node modules
 
-## Running end-to-end tests
+	npm install
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Finally, run the following command in git bash to open the site
 
-## Further help
+	ng serve --open
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Reference
+
+1. [Angular](https://angular.io/)
+3. [Angular CLI](https://cli.angular.io/)
+4. [Node JS](https://nodejs.org/en/)

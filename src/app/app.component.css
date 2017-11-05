@@ -1,0 +1,45 @@
+.map-wrapper{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.search-container{
+	background-color: #0366d0;
+	padding: 30px;
+	color: #fff;
+}
+
+.map-container{
+	padding: 0;
+}
+
+#googleMap{
+	width: 100%;
+	height: 100%;
+}
+
+.footer{
+	position: absolute;
+	bottom: 0;
+	font-size: 9pt;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 770px) {
+
+	.map-container{
+		height: 500px;
+	}
+
+	.footer{
+		display: none;
+	}
+
+}
+
+
+
+.has-danger input{
+	border: 1px solid #ff0000;
+}
