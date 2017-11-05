@@ -33,6 +33,7 @@ export class AppComponent {
 
 	ngOnInit(): void {
 
+		//Initialize reactive search form
 		this.searchForm = this.fb.group({
 	      'from': new FormControl(null, [
 	      		Validators.required
@@ -49,16 +50,18 @@ export class AppComponent {
 
   	save(form){
 
+  		//Check if all fields are valid
   		if (this.searchForm.valid) {
 
+  			//Enable loading and hide all existing connection error settings
   			this.processing = true;
   			this.connectError = false;
 
-  			console.log(this.connectError);
-
+  			//Search earthquake base on the provided dates
   			this.mapService.search(form.from, form.to).subscribe(
 		    	data => {
 
+		    		//Hide loading and add earthquake data in map
 		          	this.processing = false;
 		          	this.mapService.addEarthquakes(data);
 
@@ -67,6 +70,7 @@ export class AppComponent {
 		    	},
 		      	error => {
 		        	
+		        	//Show connection error message
 		        	this.processing = false;
 		        	this.connectError = true;
 
@@ -74,6 +78,7 @@ export class AppComponent {
 		    );
 	    }
 	    else{
+	    	//Validate all fields
 	    	this.validationFieldService.validateAllFormFields(this.searchForm);
 	    }
 
@@ -81,6 +86,7 @@ export class AppComponent {
 
   	clear(){
 
+  		//Clear all existing earthquake data in map
   		this.mapService.clearEarthquakes();
 
   	}

@@ -12,11 +12,14 @@ export class ValidationFieldService {
     msg: string[];
 
     initializeForm(form: FormGroup){
+
+        //Save provided form
         this.form = form;
     }
  
     isFieldValid(field: string) {
 
+        //Check if specified field is invalid
         return (
           (!this.form.get(field).valid && this.form.get(field).touched) ||
           (this.form.get(field).untouched && this.formSumitAttempt)
@@ -24,6 +27,8 @@ export class ValidationFieldService {
     }
 
     displayFieldCss(field: string) {
+
+        //Return has-danger class if provided field is valid
         return {
           'has-danger': this.isFieldValid(field)
         };
@@ -33,6 +38,7 @@ export class ValidationFieldService {
 
         let msg: string;
 
+        //Provide error message for the provided field
        if(this.isFieldValid(field)){
 
            if( this.form.get(field).errors.required ){
@@ -48,6 +54,7 @@ export class ValidationFieldService {
 
         this.formSumitAttempt = true;
 
+        //Validate each fields in the form
         Object.keys(formGroup.controls).forEach(field => {
           const control = formGroup.get(field);
           if (control instanceof FormControl) {

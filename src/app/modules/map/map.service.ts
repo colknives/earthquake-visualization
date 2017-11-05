@@ -15,29 +15,13 @@ export class MapService {
 
 	search(from:string, to:string) {
 
+		//Access usgs data base on the provided dates within the Philippines
         return this.http.get(appConfig.apiUrl + 'query?format=geojson&starttime='+from+'&endtime='+to+'&minlatitude=4.40&minlongitude=116.40&maxlatitude=21.10&maxlongitude=126.34&orderby=time-asc').map(response => response.json());
-    }
-
-    searchEarthquake(from:string, to:string){
-
-    	return this.search(from, to)
-	        .subscribe(
-	          data => {
-
-				for (var i = 0; i < this.features.length; i++){
-  					this.map.data.remove(this.features[i]);
-				}
-
-		        this.features = this.map.data.addGeoJson(data);
-
-		        return true;
-
-	    });
-
     }
 
     clearEarthquakes(){
 
+    	//Remove all earthquake data
     	for (var i = 0; i < this.features.length; i++){
 				this.map.data.remove(this.features[i]);
 		}
@@ -48,6 +32,7 @@ export class MapService {
 
     addEarthquakes(data:string[]){
 
+    	//Clear and add new earthquake data base on provided data
     	this.clearEarthquakes();
     	this.features = this.map.data.addGeoJson(data);
 

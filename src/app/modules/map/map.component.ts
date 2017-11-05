@@ -29,19 +29,24 @@ export class MapComponent implements OnInit {
 
 	ngOnInit(): void {
 
+		//Set map settings
 		var mapProp = {
             center: new google.maps.LatLng(12.750000,121.370000),
             zoom: 6,
             mapTypeId: 'terrain'
         };
 
+        //Initialize map
       	this.map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-      	this.MapService.map = this.map;
       	var infowindow = new google.maps.InfoWindow();
       	this.circle = new google.maps.Circle();
       	this.features = this.map.data.addGeoJson();
+
+      	//Register map and geo json in map service
+      	this.MapService.map = this.map;
       	this.MapService.features = this.features;
 
+      	//Set map marker styles
       	this.map.data.setStyle(function(feature) {
           var magnitude = feature.getProperty('mag');
           return {
@@ -56,6 +61,7 @@ export class MapComponent implements OnInit {
           };
         });
 
+      	//If marker is click, show information of selected earthquake
         this.map.data.addListener('click', function(event) {
 
           var date = new Date(event.feature.getProperty("time"));
