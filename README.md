@@ -14,9 +14,7 @@ The following are needed to install:
 
 ## Install
 
-To install, clone the repository by running the following command:
-
-	git clone https://github.com/colknives/earthquake-visualization.git
+To install, download or clone this repository.
 
 Next, run the following command in git bash to install all node modules
 
