@@ -11,6 +11,10 @@
 	color: #fff;
 }
 
+.btn-container{
+	padding-bottom: 10px;
+}
+
 .map-container{
 	padding: 0;
 }

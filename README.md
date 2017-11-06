@@ -16,11 +16,11 @@ The following are needed to install:
 
 To install, download or clone this repository.
 
-Next, run the following command in git bash to install all node modules
+Next, run the following command in command line within the cloned project to install all node modules
 
 	npm install
 
-Finally, run the following command in git bash to open the site
+Finally, run the following command in command line within the cloned project to open the site
 
 	ng serve --open
 
