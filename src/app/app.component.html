@@ -1,7 +1,7 @@
 <ngx-loading [show]="processing"></ngx-loading>
 <div class="row map-wrapper">
 	<div class="col-sm-12 col-md-3 search-container">
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<h4>Earthquake Visualization</h4>
@@ -21,44 +21,42 @@
 				<form method="POST" [formGroup]="searchForm">
 					<div class="form-group row">
 						<div class="col-md-12" >
-				            <label class="" for="from">From</label>
-				            <input 
-				            	formControlName="from"
-				            	[owlDateTimeTrigger]="from" 
-				            	[owlDateTime]="from">
-				            <!-- <owl-date-time
-				               formControlName="from"
-                               [pickerType]="'calendar'"></owl-date-time> -->
-    						<owl-date-time [pickerType]="'calendar'" #from></owl-date-time>
-				        </div>
-				        <div class="col-md-12">
-                            <validation-field 
-                                [displayError]="this.validationFieldService.isFieldValid('from')" 
-                                field="from" 
-                                [errorMsg]="this.validationFieldService.getError('from','From')">
-                            </validation-field>
-                        </div>
-				    </div>
-				    <div class="form-group row">
+				    	<label class="" for="from">From</label>
+						</div>
 						<div class="col-md-12">
-				            <label class="" for="to">To</label>
-				            <input 
+								<input
+									formControlName="from"
+									[owlDateTimeTrigger]="from"
+									[owlDateTime]="from">
+								<owl-date-time [pickerType]="'calendar'" #from></owl-date-time>
+						</div>
+		        <div class="col-md-12">
+	              <validation-field
+	                  [displayError]="this.validationFieldService.isFieldValid('from')"
+	                  field="from"
+	                  [errorMsg]="this.validationFieldService.getError('from','From')">
+	              </validation-field>
+	          </div>
+					</div>
+					<div class="form-group row">
+								<div class="col-md-12">
+						            <label class="" for="to">To</label>
+								</div>
+								<div class="col-md-12">
+				            <input
 				            	formControlName="to"
-				            	[owlDateTimeTrigger]="to" 
+				            	[owlDateTimeTrigger]="to"
 				            	[owlDateTime]="to">
-				            <!-- <owl-date-time
-				               formControlName="to"
-                               [pickerType]="'calendar'"></owl-date-time> -->
-    						   <owl-date-time [pickerType]="'calendar'" #to></owl-date-time>
+								   <owl-date-time [pickerType]="'calendar'" #to></owl-date-time>
 				        </div>
 				        <div class="col-md-12">
-                            <validation-field 
-                                [displayError]="this.validationFieldService.isFieldValid('to')" 
-                                field="to" 
-                                [errorMsg]="this.validationFieldService.getError('to','To')">
-                            </validation-field>
-                        </div>
-				    </div>
+		              <validation-field
+		                  [displayError]="this.validationFieldService.isFieldValid('to')"
+		                  field="to"
+		                  [errorMsg]="this.validationFieldService.getError('to','To')">
+		              </validation-field>
+		            </div>
+					</div>
 
 
 				    <div class="form-actions">
