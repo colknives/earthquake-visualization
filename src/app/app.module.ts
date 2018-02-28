@@ -12,10 +12,21 @@ import { MapModule } from './modules/map/map.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 
-import { DateTimePickerModule } from 'ng-pick-datetime';
+import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS} from 'ng-pick-datetime';
+import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 
 // import { MapComponent } from './components/map/map.component';
 import { MapService } from './modules/map/map.service';
+
+export const MY_MOMENT_FORMATS = {
+    parseInput: 'l LT',
+    fullPickerInput: 'l LT',
+    datePickerInput: 'YYYY-MM-DD',
+    timePickerInput: 'LT',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+};
 
 @NgModule({
   declarations: [
@@ -30,7 +41,8 @@ import { MapService } from './modules/map/map.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    DateTimePickerModule,
+    OwlDateTimeModule, 
+    OwlMomentDateTimeModule,
     LoadingModule.forRoot({
         animationType: ANIMATION_TYPES.wanderingCubes,
         backdropBackgroundColour: 'rgba(0,0,0,0.1)', 
@@ -43,7 +55,12 @@ import { MapService } from './modules/map/map.service';
     ValidationFieldModule,
     MapModule
   ],
-  providers: [MapService],
+  providers: [
+    MapService,
+    { 
+        provide: OWL_DATE_TIME_FORMATS, 
+        useValue: MY_MOMENT_FORMATS}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
